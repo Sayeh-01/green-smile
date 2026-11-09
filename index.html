@@ -5,189 +5,400 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GreenSmile — Greener Dentistry for Egypt</title>
 <meta name="description" content="GreenSmile: a free bilingual tool that helps Egyptian dental clinics and patients cut the carbon and plastic footprint of dental care (SDGs 3, 12, 13). GEO217 Group 165, Alamein International University.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦷</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%2333c26e'/><circle cx='50' cy='50' r='30' fill='%23050f16'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Readex+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/dentist-examining-patient-s-teeth-with-dental.jpg">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-:root{--bg:#f6faf7;--card:#fff;--ink:#14271d;--muted:#55695d;--green:#1f8a4c;--green2:#e3f3e9;--line:#d7e6dc;--amber:#c27a00;--red:#b23b3b}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1a14;--card:#16241c;--ink:#e6f2ea;--muted:#9db5a6;--green:#4cc17d;--green2:#1d3527;--line:#2a4034;--amber:#f0b44a;--red:#e57373}}
+:root{
+  --bg:#33c26e; --ink:#050f16; --muted:#0b3b20; --accent:#050f16; --accent-ink:#33c26e;
+  --field:#ffffff; --field-muted:#2d4a3a; --mid:#1e9e57;
+  --t1:#0a3a20; --t2:#0f5a32; --t3:#178048; --t4:#24a85f; --t5:#9be6b9;
+  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem);
+  --step-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem);
+  --step-head:clamp(2rem,1.3rem + 2.2vw,3.25rem);
+  --step-display:clamp(2.4rem,.4rem + 5vw,5.25rem);
+  --m:clamp(16px,4vw,64px);
+  --gap:clamp(120px,14vw,200px);
+  --ease:cubic-bezier(.2,.75,.2,1);
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,Cairo,system-ui,sans-serif}
-html[lang=ar] body{font-family:Cairo,system-ui,sans-serif}
-html[lang=en] [lang=ar]:not(html),html[lang=ar] [lang=en]:not(html){display:none}
-a{color:var(--green)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
-.logo{font-weight:800;font-size:20px;text-decoration:none;color:var(--ink)}
-.logo b{color:var(--green)}
-nav{display:flex;gap:16px;align-items:center;font-size:14px}
-nav a{text-decoration:none;color:var(--muted)}
-nav a:hover{color:var(--green)}
-.logo{white-space:nowrap}
-@media (max-width:720px){nav a,.logo [lang=ar]{display:none !important}}
-button,.btn{font:inherit;cursor:pointer;border:1px solid var(--green);background:var(--green);color:#fff;border-radius:999px;padding:8px 16px;font-weight:600}
-button.ghost{background:transparent;color:var(--green)}
-section{padding:56px 0;border-bottom:1px solid var(--line)}
-h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin:0 0 16px}
-h2{font-size:clamp(24px,3.5vw,32px);margin:0 0 8px}
-h3{margin:0 0 6px;font-size:18px}
-.lead{font-size:18px;color:var(--muted);max-width:720px}
-.sdgs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
-.sdg{color:#fff;border-radius:8px;padding:6px 12px;font-weight:700;font-size:14px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-.stat{font-size:36px;font-weight:800;color:var(--green);line-height:1.1}
-.src{font-size:12px;color:var(--muted)}
-.bar{display:flex;height:44px;border-radius:12px;overflow:hidden;margin:16px 0 8px;font-size:13px;font-weight:700;color:#fff}
-.bar div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
-.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--muted)}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-inline-end:6px;vertical-align:-1px}
-label{display:block;font-weight:600;font-size:14px;margin:14px 0 4px}
-input[type=number]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
-input[type=range]{width:100%;accent-color:var(--green)}
-.calc{display:grid;gap:20px;grid-template-columns:1fr 1fr}
-@media (max-width:760px){.calc{grid-template-columns:1fr}}
-.out .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
-.out .row b{font-size:20px;color:var(--green);white-space:nowrap}
-.save{background:var(--green2);border-radius:12px;padding:14px;margin-top:14px}
-.check li{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
-.check{padding:0;margin:0}
-.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--green);flex:none}
-.score{font-size:28px;font-weight:800}
-.meter{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
-.meter div{height:100%;background:var(--green);width:0;transition:width .3s}
-ol.refs{padding-inline-start:20px;font-size:14px}
-ol.refs li{margin:6px 0;direction:ltr;text-align:left}
-footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
-.team{display:flex;flex-wrap:wrap;gap:8px 24px}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--step-body)/1.5 "Bricolage Grotesque","Readex Pro",system-ui,sans-serif;font-optical-sizing:auto}
+html[lang=ar] body{font-family:"Readex Pro","Bricolage Grotesque",system-ui,sans-serif}
+html[lang=en] [lang=ar]:not(html),html[lang=ar] [lang=en]:not(html){display:none!important}
+img{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:.18em}
+h1,h2,h3{font-weight:600;letter-spacing:-.035em;line-height:.98;margin:0}
+html[lang=ar] h1,html[lang=ar] h2,html[lang=ar] h3{letter-spacing:0;line-height:1.2}
+p{margin:0}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:inherit;font-weight:500;cursor:pointer;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);padding:.85em 1.5em;text-decoration:none;transition:transform .25s var(--ease),background-color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn.light{background:var(--field);color:var(--ink)}
+
+/* header */
+header{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px var(--m)}
+.mark{font-weight:600;font-size:var(--step-lead);letter-spacing:-.03em;text-decoration:none}
+nav{display:flex;align-items:center;gap:clamp(12px,2vw,32px)}
+nav a{text-decoration:none;font-weight:500}
+nav a:hover{text-decoration:underline}
+@media (max-width:760px){nav a:not(.keep){display:none}}
+
+/* hero */
+.hero{position:relative;min-height:calc(100svh - 84px);overflow:hidden;display:flex;align-items:center;padding:48px var(--m) 80px}
+.hero .copy{position:relative;z-index:2;max-width:min(50vw,720px)}
+.hero h1{font-size:var(--step-display)}
+.hero .lead{font-size:var(--step-lead);line-height:1.35;max-width:30ch;margin-top:40px}
+.hero .act{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+.disc{position:absolute;z-index:1;width:120vh;height:120vh;border-radius:50%;overflow:hidden;background:var(--ink);inset-inline-start:max(56vw,calc(78vw - 60vh));top:calc(55% - 60vh)}
+.disc img{width:100%;height:100%;object-fit:cover;object-position:68% 50%}
+html[dir=rtl] .disc img{object-position:0% 50%}
+@media (max-width:760px){
+  .hero{align-items:flex-start;padding-top:8svh;min-height:calc(100svh - 84px)}
+  .hero .copy{max-width:100%}
+  .hero .lead{font-size:var(--step-body);margin-top:24px}
+  .hero .act{margin-top:24px}
+  .disc{width:130vw;height:130vw;inset-inline-start:-15vw;top:auto;bottom:calc(44svh - 130vw)}
+  .hero{padding-bottom:calc(100svh - 56svh)}
+}
+
+/* sections */
+section{padding:calc(var(--gap)/2) var(--m)}
+.field{background:var(--field)}
+.field .soft{color:var(--field-muted)}
+.soft{color:var(--muted)}
+h2{font-size:var(--step-head)}
+.small{font-size:var(--step-small)}
+
+/* statement + stats */
+.statement{font-size:clamp(1.5rem,1rem + 1.6vw,2.25rem);line-height:1.18;font-weight:500;letter-spacing:-.02em;max-width:32ch;margin-inline:auto;text-align:center}
+html[lang=ar] .statement{letter-spacing:0;line-height:1.5}
+.frame{display:inline-block;width:1.3em;height:.85em;border-radius:999px;overflow:hidden;vertical-align:-.1em;margin:0 .12em;background:var(--ink)}
+.frame img{width:100%;height:100%;object-fit:cover}
+.tiles{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin-top:var(--gap);align-items:start}
+.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:28px;border-start-end-radius:clamp(80px,12vw,200px)}
+.tile .fig{font-weight:600;letter-spacing:-.04em;line-height:.9}
+.tile p{max-width:32ch}
+.t-a{grid-column:1/7;min-height:70vh;background:var(--ink);color:var(--bg)}
+.t-a .fig{font-size:var(--step-display)}
+.t-b{grid-column:7/10;margin-top:14vh;min-height:44vh;background:var(--field);color:var(--ink)}
+.t-c{grid-column:10/13;margin-top:26vh;min-height:34vh;background:var(--mid);color:var(--ink)}
+.t-b .fig,.t-c .fig{font-size:var(--step-head)}
+.tiles h2{grid-column:7/13;grid-row:1;align-self:start;font-size:clamp(1.5rem,1rem + 1.6vw,2.25rem);padding-top:8px}
+.t-a,.t-b,.t-c{grid-row:1}
+.t-b{margin-top:calc(14vh + 0px)}
+.tile-pic{position:absolute;width:44%;top:28px;inset-inline-end:28px}
+.small-pic{width:38%;top:auto;bottom:auto;position:relative;inset:auto;margin:16px 0}
+.tiles .src{font-size:var(--step-small);margin-top:8px;opacity:1}
+.t-a .src{color:var(--t5)}
+@media (max-width:760px){
+  .statement{text-align:start;margin-inline:0;max-width:none}
+  .tiles{grid-template-columns:1fr 1fr;gap:40px 6px}
+  .tiles h2{grid-column:1/3;grid-row:1;padding:0 0 16px}
+  .t-a{grid-column:1/3;grid-row:2;min-height:56vw}
+  .t-a .fig{font-size:15vw}
+  .t-b{grid-column:1/2;grid-row:3;margin-top:0;min-height:62vw}
+  .t-c{grid-column:2/3;grid-row:3;margin-top:32px;min-height:62vw}
+  .t-b .fig,.t-c .fig{font-size:11vw}
+  .tile{padding:20px}
+  .tile-pic{width:30%;top:20px;inset-inline-end:20px}
+  .small-pic{width:42%}
+}
+
+/* calculator: the mirror */
+.calc{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px;align-items:center}
+.calc .controls{grid-column:1/6}
+.calc .controls p.soft{margin:20px 0 8px;max-width:40ch}
+.ctl{margin-top:28px}
+.ctl label{display:block;font-weight:500;margin-bottom:8px}
+.ctl input[type=number]{width:100%;max-width:280px;font:inherit;font-size:var(--step-lead);font-weight:500;padding:10px 16px;border:2px solid var(--ink);border-radius:999px;background:var(--field);color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--t3);height:28px;cursor:pointer}
+.whatif{margin-top:48px}
+.whatif h3{font-size:var(--step-lead);letter-spacing:-.02em}
+.mirror{grid-column:6/13;position:relative;display:flex;align-items:center;gap:32px}
+.glass{position:relative;flex:none;width:min(64vh,40vw);aspect-ratio:1;border-radius:50%;background:var(--ink);color:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12%;transition:transform .35s var(--ease)}
+.glass::after{content:"";position:absolute;width:3.2%;height:30%;background:var(--ink);border-radius:999px;bottom:-24%;inset-inline-start:16%;transform:rotate(36deg);transform-origin:top}
+html[dir=rtl] .glass::after{transform:rotate(-36deg)}
+.glass.pulse{transform:scale(.975)}
+.glass .big{font-size:var(--step-display);font-weight:600;letter-spacing:-.04em;line-height:1}
+.glass .unit{font-size:var(--step-lead);font-weight:500}
+.glass .small{color:var(--t5);max-width:22ch;margin-top:12px}
+.facts{display:grid;gap:22px;align-content:center}
+.facts div{font-size:var(--step-small);color:var(--field-muted)}
+.facts b{display:block;font-size:var(--step-lead);color:var(--ink);font-weight:600;letter-spacing:-.02em}
+.facts .save b{color:var(--t3)}
+.method{grid-column:1/13;margin-top:72px;max-width:68ch}
+@media (max-width:900px){
+  .calc .controls,.mirror,.method{grid-column:1/13}
+  .mirror{margin-top:64px;flex-direction:column;align-items:flex-start}
+  .glass{width:min(86vw,440px)}
+  .glass::after{display:none}
+  .facts{grid-template-columns:1fr 1fr;width:100%}
+}
+
+/* checklist */
+.chk-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.score{font-size:var(--step-head);font-weight:600;letter-spacing:-.04em}
+.chk-intro{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:40px;align-items:center}
+.chk-text{grid-column:1/7}
+.chk-intro p{font-size:var(--step-lead);line-height:1.35;max-width:34ch}
+.chk-intro figure{grid-column:8/13;margin:0}
+.round{border-radius:50%;overflow:hidden;aspect-ratio:1;background:var(--field)}
+.round img{width:100%;height:100%;object-fit:cover}
+figcaption{font-size:var(--step-small);color:var(--muted);margin-top:12px;max-width:40ch}
+.dots{display:flex;gap:8px;margin-top:24px}
+.dots i{width:18px;height:18px;border-radius:50%;background:var(--ink);opacity:.18;transition:opacity .3s,transform .3s var(--ease)}
+.dots i.on{opacity:1;transform:scale(1.15)}
+.checks{list-style:none;padding:0;margin:96px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:36px 64px}
+.checks li{display:flex;gap:20px;align-items:flex-start}
+.checks input{appearance:none;-webkit-appearance:none;flex:none;width:64px;height:64px;margin:0;border-radius:50%;cursor:pointer;background:var(--ink) center/cover no-repeat;background-image:var(--pic);transition:transform .25s var(--ease),box-shadow .25s}
+.checks input:hover{transform:scale(1.06)}
+.checks input:checked{background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%2333c26e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/55% no-repeat;transform:scale(1.04)}
+.checks label{cursor:pointer}
+.checks b{display:block;font-size:var(--step-body);font-weight:600;line-height:1.35}
+.checks .src{font-size:var(--step-small);color:var(--muted)}
+.verdict{margin-top:20px;font-weight:500;min-height:1.5em}
+@media (max-width:760px){
+  .chk-text,.chk-intro figure{grid-column:1/13}
+  .checks{grid-template-columns:1fr;margin-top:64px}
+  .checks input{width:52px;height:52px}
+}
+
+/* patients accordion */
+.tips-intro{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
+.tips-intro h2{grid-column:1/6}
+.tips-intro p{grid-column:7/12;font-size:var(--step-lead);line-height:1.35}
+.acc{display:flex;height:520px;margin-top:64px}
+.panel{position:relative;flex:1 1 0;min-width:0;overflow:hidden;transition:flex-grow .45s var(--ease)}
+.panel.open{flex-grow:7}
+.panel:nth-child(1){background:var(--t1);color:#fff}
+.panel:nth-child(2){background:var(--t2);color:#fff}
+.panel:nth-child(3){background:var(--t3);color:#fff}
+.panel:nth-child(4){background:var(--t4);color:var(--ink)}
+.panel:nth-child(5){background:var(--t5);color:var(--ink)}
+.panel button{position:absolute;inset:0;width:100%;border:0;background:none;color:inherit;font:inherit;cursor:pointer;text-align:start;padding:24px}
+.panel .name{position:absolute;bottom:24px;inset-inline-start:24px;font-size:var(--step-lead);font-weight:600;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.panel .body{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:32px;opacity:0;visibility:hidden;transition:opacity .35s ease .1s}
+.panel.open .body{opacity:1;visibility:visible}
+.panel.open .name{visibility:hidden}
+.panel.open button{pointer-events:none}
+.panel .body h3{font-size:var(--step-head);letter-spacing:-.03em;align-self:start}
+.panel .body p{grid-column:1;align-self:end;max-width:36ch}
+.panel .body .round{grid-column:2;grid-row:1/3;align-self:center;width:min(100%,380px);justify-self:center}
+@media (max-width:860px){
+  .tips-intro h2,.tips-intro p{grid-column:1/13}
+  .acc{flex-direction:column;height:auto}
+  .panel{flex:none;min-height:64px}
+  .panel .name{writing-mode:horizontal-tb;transform:none;top:18px;bottom:auto}
+  .panel .body{position:relative;display:none;grid-template-columns:1fr;padding:24px}
+  .panel.open .body{display:grid}
+  .panel.open button{display:none}
+  .panel .body .round{grid-column:1;grid-row:auto;width:160px;justify-self:start}
+  .panel .body p{grid-column:1}
+}
+
+/* research */
+.refs-head{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
+.refs-head h2{grid-column:1/7}
+.refs-head p{grid-column:7/13;max-width:44ch}
+ol.refs{direction:ltr;text-align:left;margin:64px 0 0;padding-inline-start:1.2em;columns:2;column-gap:64px;font-size:var(--step-body)}
+ol.refs li{overflow-wrap:anywhere;break-inside:avoid;margin:0 0 18px;direction:ltr;text-align:left;line-height:1.5}
+@media (max-width:760px){.refs-head h2,.refs-head p{grid-column:1/13}ol.refs{columns:1}}
+
+/* footer */
+footer{background:var(--ink);color:var(--bg);padding:96px var(--m) 40px}
+.word{overflow:clip;font-size:15.5vw;font-weight:600;letter-spacing:-.06em;line-height:.8;margin:0 0 72px;white-space:nowrap}
+html[lang=ar] .word{letter-spacing:0;line-height:1.1;font-size:11vw}
+.fcols{display:grid;grid-template-columns:repeat(12,1fr);gap:32px 24px}
+.fcols div{grid-column:span 4}
+.fcols p{color:#d8f5e4;overflow-wrap:anywhere}
+.fcols b{color:var(--bg);font-weight:600}
+.credits{grid-column:1/13;font-size:var(--step-small);color:#d8f5e4;max-width:110ch}
+.credits a{color:#d8f5e4}
+.end{grid-column:1/13;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px}
+.end .btn{background:var(--bg);color:var(--ink)}
+@media (max-width:760px){.fcols div{grid-column:span 12}}
+
+/* motion */
+.js [data-rise]{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0ms)}
+.js [data-rise].in{opacity:1;transform:none}
+.js .disc{animation:shutter 1.1s var(--ease) .1s both}
+.js .disc img{animation:settle 1.1s var(--ease) .1s both,drift 26s ease-in-out 1.2s infinite alternate}
+@keyframes shutter{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0)}}
+@keyframes settle{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.07) translateX(-1.5%)}}
+main{transition:opacity .18s ease}
+main.swap{opacity:.15}
+@media (prefers-reduced-motion:reduce){
+  .js [data-rise]{opacity:1;transform:none;transition:none}
+  .js .disc,.js .disc img{animation:none}
+  .panel,.panel .body,.btn,.glass,.dots i,.checks input,main{transition:none}
+}
 </style>
 </head>
 <body>
-<header><div class="wrap">
-  <a class="logo" href="#top">🦷 <b>Green</b>Smile <span lang="ar">· ابتسامة خضراء</span></a>
-  <nav>
-    <a href="#problem"><span lang="en">Problem</span><span lang="ar">المشكلة</span></a>
-    <a href="#calc"><span lang="en">Calculator</span><span lang="ar">الحاسبة</span></a>
-    <a href="#checklist"><span lang="en">Clinic checklist</span><span lang="ar">قائمة العيادة</span></a>
+<header>
+  <a class="mark" href="#top">GreenSmile</a>
+  <nav aria-label="Main">
+    <a class="keep" href="#calc"><span lang="en">Calculator</span><span lang="ar">الحاسبة</span></a>
+    <a href="#checklist"><span lang="en">Checklist</span><span lang="ar">قائمة العيادة</span></a>
     <a href="#patients"><span lang="en">Patients</span><span lang="ar">للمرضى</span></a>
-    <button class="ghost" id="langBtn" type="button" aria-label="Switch language">عربي</button>
+    <a href="#research"><span lang="en">Research</span><span lang="ar">المراجع</span></a>
+    <button class="btn" id="langBtn" type="button" aria-label="Switch language">عربي</button>
   </nav>
-</div></header>
+</header>
 
 <main id="top">
-<section><div class="wrap">
-  <h1><span lang="en">Greener dentistry for Egypt — starting with one clinic and one smile.</span><span lang="ar">طب أسنان أكثر استدامة لمصر — يبدأ بعيادة واحدة وابتسامة واحدة.</span></h1>
-  <p class="lead"><span lang="en">Dental care has a hidden climate cost: patient travel, single-use plastics and energy. GreenSmile helps dental clinics measure that footprint and cut it, and helps patients keep their smiles healthy in a planet-friendly way.</span><span lang="ar">لرعاية الأسنان تكلفة مناخية خفية: تنقّل المرضى، والبلاستيك أحادي الاستخدام، والطاقة. يساعد «ابتسامة خضراء» عيادات الأسنان على قياس هذه البصمة وخفضها، ويساعد المرضى على الحفاظ على صحة أسنانهم بطريقة صديقة للكوكب.</span></p>
-  <div class="sdgs">
-    <span class="sdg" style="background:#4c9f38">SDG 3 · <span lang="en">Good Health</span><span lang="ar">الصحة الجيدة</span></span>
-    <span class="sdg" style="background:#bf8b2e">SDG 12 · <span lang="en">Responsible Consumption</span><span lang="ar">الاستهلاك المسؤول</span></span>
-    <span class="sdg" style="background:#3f7e44">SDG 13 · <span lang="en">Climate Action</span><span lang="ar">العمل المناخي</span></span>
-  </div>
-  <a class="btn" href="#calc" style="text-decoration:none;display:inline-block"><span lang="en">Measure your clinic →</span><span lang="ar">احسب بصمة عيادتك ←</span></a>
-</div></section>
-
-<section id="problem"><div class="wrap">
-  <h2><span lang="en">The problem</span><span lang="ar">المشكلة</span></h2>
-  <p class="lead"><span lang="en">Healthcare contributes to climate change, and dentistry is no exception. In England, NHS dental services alone emitted an estimated 675,000 tonnes of CO₂e per year — and almost two-thirds of it came from people travelling to the clinic.</span><span lang="ar">يساهم قطاع الرعاية الصحية في تغيّر المناخ، وطب الأسنان ليس استثناءً. ففي إنجلترا وحدها قُدّرت انبعاثات خدمات الأسنان الحكومية بنحو ٦٧٥ ألف طن من مكافئ ثاني أكسيد الكربون سنويًا — وجاء ما يقارب ثلثيها من تنقّل الأشخاص إلى العيادة.</span></p>
-  <div class="card">
-    <h3><span lang="en">Where a dental service's carbon comes from</span><span lang="ar">من أين تأتي انبعاثات خدمات الأسنان؟</span></h3>
-    <div class="bar" role="img" aria-label="Travel 64.5%, procurement 19%, energy 15.3%, other 1.2%">
-      <div style="width:64.5%;background:#1f8a4c">64.5%</div>
-      <div style="width:19%;background:#bf8b2e">19%</div>
-      <div style="width:15.3%;background:#3b6ea5">15.3%</div>
-      <div style="width:1.2%;background:#888"></div>
+<section class="hero" aria-labelledby="h1">
+  <div class="disc"><img src="assets/dentist-examining-patient-s-teeth-with-dental.jpg" width="1400" height="902" alt="A dentist examining a patient's teeth with a mouth mirror"></div>
+  <div class="copy">
+    <h1 id="h1"><span lang="en">Greener dentistry for Egypt</span><span lang="ar">طب أسنان أخضر لمصر</span></h1>
+    <p class="lead"><span lang="en">A free tool that helps dental clinics measure and cut the carbon and plastic behind every visit.</span><span lang="ar">أداة مجانية تساعد عيادات الأسنان على قياس الكربون والبلاستيك وراء كل زيارة وخفضهما.</span></p>
+    <div class="act">
+      <a class="btn" href="#calc"><span lang="en">Measure your clinic</span><span lang="ar">احسب بصمة عيادتك</span></a>
     </div>
-    <div class="legend">
-      <span><i style="background:#1f8a4c"></i><span lang="en">Patient &amp; staff travel</span><span lang="ar">تنقّل المرضى والعاملين</span></span>
-      <span><i style="background:#bf8b2e"></i><span lang="en">Procurement (materials, plastics)</span><span lang="ar">المشتريات (مواد وبلاستيك)</span></span>
-      <span><i style="background:#3b6ea5"></i><span lang="en">Energy</span><span lang="ar">الطاقة</span></span>
-      <span><i style="background:#888"></i><span lang="en">Other</span><span lang="ar">أخرى</span></span>
-    </div>
-    <p class="src">Duane et al. (2017), British Dental Journal.</p>
   </div>
-  <div class="grid" style="margin-top:16px">
-    <div class="card"><div class="stat">21 · 354 g</div><p><span lang="en">single-use plastic items — and their weight — thrown away per dental procedure on average.</span><span lang="ar">قطعة بلاستيك أحادية الاستخدام — ووزنها — تُرمى في المتوسط مع كل إجراء أسنان.</span></p><p class="src">Martin et al. (2022)</p></div>
-    <div class="card"><div class="stat">81.5%</div><p><span lang="en">of 302 Egyptian dentists surveyed had poor green-dentistry practices, though 99.7% had a positive attitude.</span><span lang="ar">من ٣٠٢ طبيب أسنان مصري شملهم المسح لديهم ممارسات ضعيفة في طب الأسنان الأخضر، رغم أن ٩٩٫٧٪ منهم لديهم اتجاه إيجابي.</span></p><p class="src">Abdelgawad et al. (2025)</p></div>
-    <div class="card"><div class="stat">4,875 kg</div><p><span lang="en">of CO₂ avoided by just 101 teledentistry visits that replaced trips to the clinic.</span><span lang="ar">من ثاني أكسيد الكربون تم تجنّبها بفضل ١٠١ زيارة عن بُعد فقط بدلًا من الذهاب إلى العيادة.</span></p><p class="src">Danesh et al. (2025)</p></div>
-    <div class="card"><div class="stat">60% → 93%</div><p><span lang="en">rise in Egyptian dental students' sustainability knowledge after one educational program.</span><span lang="ar">ارتفاع معرفة طلاب طب الأسنان المصريين بالاستدامة بعد برنامج تعليمي واحد.</span></p><p class="src">Bishr et al. (2026)</p></div>
-  </div>
-</div></section>
+</section>
 
-<section id="calc"><div class="wrap">
-  <h2><span lang="en">Clinic footprint calculator</span><span lang="ar">حاسبة بصمة العيادة</span></h2>
-  <p class="lead"><span lang="en">Enter rough monthly numbers for your clinic. Everything is calculated in your browser — nothing is sent anywhere.</span><span lang="ar">أدخل أرقامًا تقريبية شهرية لعيادتك. تتم كل الحسابات داخل المتصفح — لا تُرسل أي بيانات.</span></p>
+<section id="problem" aria-labelledby="h-problem">
+  <p class="statement" data-rise><span lang="en">Every check-up leaves a trace: the car trip <span class="frame"><img src="assets/cairo-traffic-near-muhammad-ali-mosque-in.jpg" width="1400" height="933" alt="Cairo traffic" loading="lazy"></span>, the plastic <span class="frame"><img src="assets/disposable-gloves-06.jpg" width="1400" height="1050" alt="A box of disposable gloves" loading="lazy"></span> thrown away, and the energy that runs the clinic <span class="frame"><img src="assets/dental-mirror.jpg" width="1400" height="788" alt="A steel dental mirror" loading="lazy"></span>.</span><span lang="ar">كل فحص للأسنان يترك أثرًا: رحلة السيارة <span class="frame"><img src="assets/cairo-traffic-near-muhammad-ali-mosque-in.jpg" width="1400" height="933" alt="زحام المرور في القاهرة" loading="lazy"></span>، والبلاستيك <span class="frame"><img src="assets/disposable-gloves-06.jpg" width="1400" height="1050" alt="علبة قفازات للاستخدام مرة واحدة" loading="lazy"></span> الذي يُرمى، والطاقة التي تُشغّل العيادة <span class="frame"><img src="assets/dental-mirror.jpg" width="1400" height="788" alt="مرآة أسنان من الستانلس" loading="lazy"></span>.</span></p>
+  <div class="tiles">
+    <h2 id="h-problem" data-rise><span lang="en">Where the carbon goes</span><span lang="ar">أين تذهب الانبعاثات؟</span></h2>
+    <div class="tile t-a" data-rise>
+      <div class="fig" data-count="64.5" data-dec="1" data-suffix="%">64.5%</div>
+      <div class="round tile-pic"><img src="assets/cairo-traffic-near-muhammad-ali-mosque-in.jpg" width="1400" height="933" alt="Traffic in Cairo seen from a car" loading="lazy"></div>
+      <div><p><span lang="en">of dentistry's carbon comes from patients and staff travelling to the clinic. In England that is part of 675,000 tonnes of CO₂e a year.</span><span lang="ar">من انبعاثات طب الأسنان تأتي من تنقّل المرضى والعاملين إلى العيادة، ضمن ٦٧٥ ألف طن من مكافئ ثاني أكسيد الكربون سنويًا في إنجلترا.</span></p><p class="src">Duane et al. (2017)</p></div>
+    </div>
+    <div class="tile t-b" data-rise style="--d:90ms">
+      <div class="fig" data-count="21" data-dec="0">21</div>
+      <div class="round tile-pic small-pic"><img src="assets/disposable-gloves-06.jpg" width="1400" height="1050" alt="A box of disposable gloves" loading="lazy"></div>
+      <div><p><span lang="en">single-use plastic items, about 354 g, thrown away with every dental procedure.</span><span lang="ar">قطعة بلاستيك أحادية الاستخدام (نحو ٣٥٤ جرامًا) تُرمى مع كل إجراء علاجي.</span></p><p class="src">Martin et al. (2022)</p></div>
+    </div>
+    <div class="tile t-c" data-rise style="--d:180ms">
+      <div class="fig" data-count="81.5" data-dec="1" data-suffix="%">81.5%</div>
+      <div><p><span lang="en">of 302 Egyptian dentists have poor green practices, though 99.7% support the idea.</span><span lang="ar">من ٣٠٢ طبيب أسنان مصري ممارساتهم ضعيفة، رغم تأييد ٩٩٫٧٪ للفكرة.</span></p><p class="src">Abdelgawad et al. (2025)</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="calc" class="field" aria-labelledby="h-calc">
   <div class="calc">
-    <div class="card">
-      <label for="visits"><span lang="en">Patient visits per month</span><span lang="ar">عدد زيارات المرضى شهريًا</span></label>
-      <input id="visits" type="number" min="0" value="300">
-      <label for="km"><span lang="en">Average round-trip distance per visit (km)</span><span lang="ar">متوسط مسافة الذهاب والعودة لكل زيارة (كم)</span></label>
-      <input id="km" type="number" min="0" value="16">
-      <label for="car"><span lang="en">Patients who come by private car or taxi: <output id="carOut">60</output>%</span><span lang="ar">المرضى القادمون بسيارة خاصة أو تاكسي: <output id="carOutAr">60</output>٪</span></label>
-      <input id="car" type="range" min="0" max="100" value="60">
-      <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
-      <h3><span lang="en">What if you…</span><span lang="ar">ماذا لو…</span></h3>
-      <label for="avoid"><span lang="en">…avoid <output id="avoidOut">20</output>% of trips (combined appointments, teledentistry follow-ups, prevention)</span><span lang="ar">…تجنّبت <output id="avoidOutAr">20</output>٪ من الزيارات (دمج المواعيد، المتابعة عن بُعد، الوقاية)</span></label>
-      <input id="avoid" type="range" min="0" max="60" value="20">
-      <label for="plastic"><span lang="en">…cut single-use plastic by <output id="plasticOut">30</output>% (reusable kits, recycling)</span><span lang="ar">…خفّضت البلاستيك أحادي الاستخدام بنسبة <output id="plasticOutAr">30</output>٪ (أدوات قابلة لإعادة الاستخدام، التدوير)</span></label>
-      <input id="plastic" type="range" min="0" max="80" value="30">
-    </div>
-    <div class="card out" aria-live="polite">
-      <h3><span lang="en">Your clinic each month</span><span lang="ar">عيادتك كل شهر</span></h3>
-      <div class="row"><span><span lang="en">CO₂ from patient car trips</span><span lang="ar">ثاني أكسيد الكربون من رحلات السيارات</span></span><b id="rTravel"></b></div>
-      <div class="row"><span><span lang="en">Rough total clinic footprint*</span><span lang="ar">البصمة الكلية التقريبية للعيادة*</span></span><b id="rTotal"></b></div>
-      <div class="row"><span><span lang="en">Single-use plastic waste</span><span lang="ar">مخلفات البلاستيك أحادي الاستخدام</span></span><b id="rPlastic"></b></div>
-      <div class="row"><span><span lang="en">Single-use plastic items</span><span lang="ar">عدد قطع البلاستيك</span></span><b id="rItems"></b></div>
-      <div class="save">
-        <h3><span lang="en">Your yearly savings</span><span lang="ar">ما ستوفّره سنويًا</span></h3>
-        <div class="row"><span><span lang="en">CO₂ avoided</span><span lang="ar">ثاني أكسيد الكربون المُتجنَّب</span></span><b id="sCo2"></b></div>
-        <div class="row" style="border:0"><span><span lang="en">Plastic kept out of landfill</span><span lang="ar">بلاستيك لن يذهب إلى المدافن</span></span><b id="sPlastic"></b></div>
+    <div class="controls">
+      <h2 id="h-calc" data-rise><span lang="en">Your clinic in the mirror</span><span lang="ar">عيادتك في المرآة</span></h2>
+      <p class="soft" data-rise style="--d:80ms"><span lang="en">Enter rough monthly numbers. Everything is worked out in your browser; nothing is sent anywhere.</span><span lang="ar">أدخل أرقامًا شهرية تقريبية. تتم كل الحسابات داخل المتصفح ولا تُرسل أي بيانات.</span></p>
+      <div class="ctl" data-rise style="--d:140ms">
+        <label for="visits"><span lang="en">Patient visits per month</span><span lang="ar">عدد زيارات المرضى شهريًا</span></label>
+        <input id="visits" type="number" min="0" inputmode="numeric" value="300">
       </div>
-      <p class="src"><span lang="en">Method: car CO₂ uses 8.82 kg CO₂ per gallon at 25 mpg (≈0.219 kg/km), as in Danesh et al. (2025). Plastic uses 21 items / 354 g per procedure (Martin et al., 2022). *Total assumes travel ≈ 64.5% of a dental service's footprint (Duane et al., 2017) — an estimate, not an audit.</span><span lang="ar">طريقة الحساب: انبعاثات السيارة = ٨٫٨٢ كجم ثاني أكسيد كربون لكل جالون بمعدل ٢٥ ميلًا للجالون (≈٠٫٢١٩ كجم/كم) كما في Danesh et al. (2025). البلاستيك = ٢١ قطعة / ٣٥٤ جم لكل إجراء (Martin et al., 2022). *البصمة الكلية تفترض أن التنقّل ≈ ٦٤٫٥٪ من بصمة خدمات الأسنان (Duane et al., 2017) — تقدير وليس تدقيقًا.</span></p>
+      <div class="ctl" data-rise style="--d:200ms">
+        <label for="km"><span lang="en">Average round trip per visit (km)</span><span lang="ar">متوسط مسافة الذهاب والعودة (كم)</span></label>
+        <input id="km" type="number" min="0" inputmode="decimal" value="16">
+      </div>
+      <div class="ctl" data-rise style="--d:260ms">
+        <label for="car"><span lang="en">Patients arriving by car or taxi: <output id="carOut">60</output>%</span><span lang="ar">القادمون بسيارة أو تاكسي: <output id="carOutAr">60</output>٪</span></label>
+        <input id="car" type="range" min="0" max="100" value="60">
+      </div>
+      <div class="whatif" data-rise style="--d:320ms">
+        <h3><span lang="en">What if you…</span><span lang="ar">ماذا لو…</span></h3>
+        <div class="ctl">
+          <label for="avoid"><span lang="en">…avoid <output id="avoidOut">20</output>% of trips with combined visits, online follow-ups and prevention</span><span lang="ar">…تجنّبت <output id="avoidOutAr">20</output>٪ من الزيارات بدمج المواعيد والمتابعة عن بُعد والوقاية</span></label>
+          <input id="avoid" type="range" min="0" max="60" value="20">
+        </div>
+        <div class="ctl">
+          <label for="plastic"><span lang="en">…cut single-use plastic by <output id="plasticOut">30</output>% with reusable kits</span><span lang="ar">…خفّضت البلاستيك أحادي الاستخدام <output id="plasticOutAr">30</output>٪ بأدوات قابلة لإعادة الاستخدام</span></label>
+          <input id="plastic" type="range" min="0" max="80" value="30">
+        </div>
+      </div>
+    </div>
+    <div class="mirror" aria-live="polite">
+      <div class="glass" id="glass" data-rise>
+        <span class="big" id="rTravel">631</span>
+        <span class="unit" id="rTravelU">kg</span>
+        <span class="small"><span lang="en">from patient car trips each month</span><span lang="ar">من رحلات المرضى بالسيارات شهريًا</span></span>
+        <span class="small"><span lang="en">Rough total clinic footprint*:</span><span lang="ar">البصمة الكلية التقريبية*:</span> <b id="rTotal">979 kg</b></span>
+      </div>
+      <div class="facts" data-rise style="--d:120ms">
+        <div><b id="rPlastic">106 kg</b><span lang="en">single-use plastic a month</span><span lang="ar">بلاستيك أحادي الاستخدام شهريًا</span></div>
+        <div><b id="rItems">6,300</b><span lang="en">plastic items a month</span><span lang="ar">قطعة بلاستيك شهريًا</span></div>
+        <div class="save"><b id="sCo2">1.52 t</b><span lang="en">CO₂ saved a year</span><span lang="ar">ثاني أكسيد كربون يُوفَّر سنويًا</span></div>
+        <div class="save"><b id="sPlastic">382 kg</b><span lang="en">plastic kept out of landfill a year</span><span lang="ar">بلاستيك لن يذهب إلى المدافن سنويًا</span></div>
+      </div>
+    </div>
+    <p class="method small soft"><span lang="en">Method: car CO₂ uses 8.82 kg CO₂ per gallon at 25 mpg (about 0.219 kg/km), as in Danesh et al. (2025). Plastic uses 21 items and 354 g per procedure (Martin et al., 2022). *The total assumes travel is 64.5% of a dental service's footprint (Duane et al., 2017); it is an estimate, not an audit.</span><span lang="ar">طريقة الحساب: انبعاثات السيارة = ٨٫٨٢ كجم ثاني أكسيد كربون لكل جالون بمعدل ٢٥ ميلًا للجالون (نحو ٠٫٢١٩ كجم/كم) كما في Danesh et al. (2025). البلاستيك = ٢١ قطعة و٣٥٤ جرامًا لكل إجراء (Martin et al., 2022). *البصمة الكلية تفترض أن التنقّل يمثل ٦٤٫٥٪ من بصمة خدمات الأسنان (Duane et al., 2017)، وهي تقدير وليست تدقيقًا.</span></p>
+  </div>
+</section>
+
+<section id="checklist" aria-labelledby="h-chk">
+  <div class="chk-head">
+    <h2 id="h-chk" data-rise><span lang="en">Green clinic checklist</span><span lang="ar">قائمة العيادة الخضراء</span></h2>
+    <div class="score" data-rise style="--d:80ms" aria-live="polite"><span id="score">0</span>/10</div>
+  </div>
+  <div class="chk-intro">
+    <div class="chk-text" style="--d:120ms" data-rise>
+      <p><span lang="en">Tick what your clinic already does; every step comes from published research. Training works: one program raised Egyptian dental students' knowledge from 60% to 93%.</span><span lang="ar">ضع علامة على ما تطبّقه عيادتك بالفعل، فكل خطوة مبنية على بحث منشور. والتدريب ينجح: رفع برنامج واحد معرفة طلاب طب الأسنان المصريين من ٦٠٪ إلى ٩٣٪.</span></p>
+      <div class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="verdict" id="verdict"></p>
+    </div>
+    <figure data-rise style="--d:160ms">
+      <div class="round"><img src="assets/dental-instruments-from-chirurgia.jpg" width="1220" height="1400" alt="An old engraving of steel dental instruments" loading="lazy"></div>
+      <figcaption><span lang="en">Steel dental instruments, from the early printed book 'Chirurgia'. Reusable tools are not new.</span><span lang="ar">أدوات أسنان معدنية من كتاب «Chirurgia» القديم. الأدوات القابلة لإعادة الاستخدام ليست فكرة جديدة.</span></figcaption>
+    </figure>
+  </div>
+  <ul class="checks" id="checks">
+    <li data-rise><input type="checkbox" id="c1" style="--pic:url(assets/dental-mirror.jpg)"><label for="c1"><b><span lang="en">Use reusable steel examination kits instead of disposable plastic ones.</span><span lang="ar">استخدام أطقم فحص معدنية قابلة لإعادة الاستخدام بدلًا من البلاستيكية.</span></b><span class="src">Byrne et al. (2022)</span></label></li>
+    <li data-rise style="--d:70ms"><input type="checkbox" id="c2" style="--pic:url(assets/cairo-traffic-near-muhammad-ali-mosque-in.jpg)"><label for="c2"><b><span lang="en">Combine treatments into fewer visits when clinically safe.</span><span lang="ar">دمج العلاجات في عدد أقل من الزيارات متى كان ذلك آمنًا طبيًا.</span></b><span class="src">Duane et al. (2017)</span></label></li>
+    <li data-rise><input type="checkbox" id="c3" style="--pic:url(assets/dentist-examining-patient-s-teeth-with-dental.jpg)"><label for="c3"><b><span lang="en">Offer teledentistry for triage, follow-ups and simple questions.</span><span lang="ar">تقديم استشارات عن بُعد للفرز والمتابعة والأسئلة البسيطة.</span></b><span class="src">Danesh et al. (2025)</span></label></li>
+    <li data-rise style="--d:70ms"><input type="checkbox" id="c4" style="--pic:url(assets/toothbrush-toothpaste-dental-care-571741.jpg)"><label for="c4"><b><span lang="en">Put prevention first: risk-based recalls, fluoride and diet advice.</span><span lang="ar">الوقاية أولًا: مواعيد متابعة حسب درجة الخطورة، والفلورايد، ونصائح غذائية.</span></b><span class="src">Duane et al. (2017)</span></label></li>
+    <li data-rise><input type="checkbox" id="c5" style="--pic:url(assets/disposable-gloves-06.jpg)"><label for="c5"><b><span lang="en">Audit the single-use plastics in your routine set-up and replace what you can.</span><span lang="ar">مراجعة البلاستيك أحادي الاستخدام في التجهيز الروتيني واستبدال ما يمكن استبداله.</span></b><span class="src">Martin et al. (2022)</span></label></li>
+    <li data-rise style="--d:70ms"><input type="checkbox" id="c6" style="--pic:url(assets/disposable-gloves-06.jpg)"><label for="c6"><b><span lang="en">Separate clinical from non-clinical waste and recycle the non-clinical part.</span><span lang="ar">فصل المخلفات الطبية عن غير الطبية وإعادة تدوير الجزء غير الطبي.</span></b><span class="src">Martin et al. (2021b)</span></label></li>
+    <li data-rise><input type="checkbox" id="c7" style="--pic:url(assets/dental-mirror.jpg)"><label for="c7"><b><span lang="en">Review cleaning, disinfection, bibs and water use, the biggest hotspots of a check-up.</span><span lang="ar">مراجعة التنظيف والتطهير والمرايل واستهلاك المياه، أكبر مصادر الأثر في الفحص.</span></b><span class="src">Borglin et al. (2021)</span></label></li>
+    <li data-rise style="--d:70ms"><input type="checkbox" id="c8" style="--pic:url(assets/dental-instruments-from-chirurgia.jpg)"><label for="c8"><b><span lang="en">Switch off equipment, lights and air conditioning when not in use.</span><span lang="ar">إطفاء الأجهزة والإضاءة والتكييف عند عدم الاستخدام.</span></b><span class="src">Duane et al. (2017)</span></label></li>
+    <li data-rise><input type="checkbox" id="c9" style="--pic:url(assets/toothbrush-toothpaste-dental-care-571741.jpg)"><label for="c9"><b><span lang="en">Recommend manual toothbrushes with replaceable heads over electric ones.</span><span lang="ar">التوصية بفرشاة يدوية برأس قابل للتغيير بدلًا من الكهربائية.</span></b><span class="src">Lyne et al. (2020)</span></label></li>
+    <li data-rise style="--d:70ms"><input type="checkbox" id="c10" style="--pic:url(assets/dentist-examining-patient-s-teeth-with-dental.jpg)"><label for="c10"><b><span lang="en">Train the whole team and talk to patients about green dentistry.</span><span lang="ar">تدريب فريق العيادة والتحدث مع المرضى عن طب الأسنان الأخضر.</span></b><span class="src">Bishr et al. (2026); Martin et al. (2021a)</span></label></li>
+  </ul>
+</section>
+
+<section id="patients" class="field" aria-labelledby="h-pat">
+  <div class="tips-intro">
+    <h2 id="h-pat" data-rise><span lang="en">For patients</span><span lang="ar">للمرضى</span></h2>
+    <p data-rise style="--d:90ms"><span lang="en">A healthy smile can be kind to the planet too. Five habits, from the most important to the easiest.</span><span lang="ar">يمكن لابتسامتك الصحية أن تكون رفيقة بالكوكب أيضًا. خمس عادات، من الأهم إلى الأسهل.</span></p>
+  </div>
+  <div class="acc" id="acc" data-rise style="--d:160ms">
+    <div class="panel open">
+      <button type="button" aria-expanded="true"><span class="name"><span lang="en">Prevent first</span><span lang="ar">الوقاية أولًا</span></span></button>
+      <div class="body"><h3><span lang="en">Prevent first</span><span lang="ar">الوقاية أولًا</span></h3><p><span lang="en">Brush twice a day with fluoride toothpaste and cut sugary snacks. Every treatment you avoid saves trips, materials and money.</span><span lang="ar">نظّف أسنانك مرتين يوميًا بمعجون يحتوي على الفلورايد وقلّل السكريات. كل علاج تتجنّبه يوفّر رحلات ومواد ومالًا.</span></p><div class="round"><img src="assets/toothbrush-toothpaste-dental-care-571741.jpg" width="1400" height="933" alt="A toothbrush with toothpaste" loading="lazy"></div></div>
+    </div>
+    <div class="panel">
+      <button type="button" aria-expanded="false"><span class="name"><span lang="en">Fewer visits</span><span lang="ar">زيارات أقل</span></span></button>
+      <div class="body"><h3><span lang="en">Fewer visits</span><span lang="ar">زيارات أقل</span></h3><p><span lang="en">Ask your dentist to combine treatments in one appointment and use online follow-ups. 101 online visits saved 4,875 kg of CO₂ in one study.</span><span lang="ar">اطلب من طبيبك دمج العلاجات في موعد واحد واستخدم المتابعة عبر الإنترنت. في إحدى الدراسات وفّرت ١٠١ زيارة عن بُعد ٤٬٨٧٥ كجم من ثاني أكسيد الكربون.</span></p><div class="round"><img src="assets/dentist-examining-patient-s-teeth-with-dental.jpg" width="1400" height="902" alt="A dental check-up" loading="lazy"></div></div>
+    </div>
+    <div class="panel">
+      <button type="button" aria-expanded="false"><span class="name"><span lang="en">Greener trip</span><span lang="ar">رحلة أنظف</span></span></button>
+      <div class="body"><h3><span lang="en">Greener trip</span><span lang="ar">رحلة أنظف</span></h3><p><span lang="en">Travel is about 65% of dentistry's carbon. Walk, share a ride or take public transport to your clinic.</span><span lang="ar">التنقّل يمثّل نحو ٦٥٪ من انبعاثات طب الأسنان. امشِ أو شارك الرحلة أو استخدم المواصلات العامة.</span></p><div class="round"><img src="assets/cairo-traffic-near-muhammad-ali-mosque-in.jpg" width="1400" height="933" alt="Cairo traffic" loading="lazy"></div></div>
+    </div>
+    <div class="panel">
+      <button type="button" aria-expanded="false"><span class="name"><span lang="en">Smarter brush</span><span lang="ar">فرشاة أذكى</span></span></button>
+      <div class="body"><h3><span lang="en">Smarter brush</span><span lang="ar">فرشاة أذكى</span></h3><p><span lang="en">A manual brush with a replaceable head has one of the lowest footprints; electric brushes had the highest in a life-cycle study.</span><span lang="ar">الفرشاة اليدوية ذات الرأس القابل للتغيير من أقل الخيارات أثرًا، بينما كانت الكهربائية الأعلى أثرًا في دراسة دورة الحياة.</span></p><div class="round"><img src="assets/toothbrush-toothpaste-dental-care-571741.jpg" width="1400" height="933" alt="A manual toothbrush" loading="lazy"></div></div>
+    </div>
+    <div class="panel">
+      <button type="button" aria-expanded="false"><span class="name"><span lang="en">Ask your clinic</span><span lang="ar">اسأل عيادتك</span></span></button>
+      <div class="body"><h3><span lang="en">Ask your clinic</span><span lang="ar">اسأل عيادتك</span></h3><p><span lang="en">Ask whether they use reusable instruments and recycle. When patients ask, clinics change.</span><span lang="ar">اسأل إن كانت تستخدم أدوات قابلة لإعادة الاستخدام وتعيد التدوير. حين يسأل المرضى تتغيّر العيادات.</span></p><div class="round"><img src="assets/dental-mirror.jpg" width="1400" height="788" alt="A reusable steel dental mirror" loading="lazy"></div></div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section id="checklist"><div class="wrap">
-  <h2><span lang="en">Green clinic checklist</span><span lang="ar">قائمة العيادة الخضراء</span></h2>
-  <p class="lead"><span lang="en">Tick what your clinic already does. Each step comes from published research.</span><span lang="ar">ضع علامة على ما تطبّقه عيادتك بالفعل. كل خطوة مبنية على أبحاث منشورة.</span></p>
-  <div class="calc">
-    <ul class="check card" id="checks">
-      <li><input type="checkbox" id="c1"><label for="c1" style="margin:0;font-weight:400"><span lang="en">Use reusable stainless-steel examination kits instead of disposable plastic ones.</span><span lang="ar">استخدام أطقم فحص من الستانلس ستيل قابلة لإعادة الاستخدام بدلًا من الأطقم البلاستيكية.</span> <span class="src">Byrne et al. (2022)</span></label></li>
-      <li><input type="checkbox" id="c2"><label for="c2" style="margin:0;font-weight:400"><span lang="en">Combine treatments into fewer visits when clinically safe.</span><span lang="ar">دمج العلاجات في عدد أقل من الزيارات متى كان ذلك آمنًا طبيًا.</span> <span class="src">Duane et al. (2017)</span></label></li>
-      <li><input type="checkbox" id="c3"><label for="c3" style="margin:0;font-weight:400"><span lang="en">Offer teledentistry for triage, follow-ups and simple questions.</span><span lang="ar">تقديم استشارات عن بُعد للفرز والمتابعة والأسئلة البسيطة.</span> <span class="src">Danesh et al. (2025)</span></label></li>
-      <li><input type="checkbox" id="c4"><label for="c4" style="margin:0;font-weight:400"><span lang="en">Put prevention first: risk-based recalls, fluoride and diet advice.</span><span lang="ar">الوقاية أولًا: مواعيد متابعة حسب درجة الخطورة، والفلورايد، ونصائح غذائية.</span> <span class="src">Duane et al. (2020)</span></label></li>
-      <li><input type="checkbox" id="c5"><label for="c5" style="margin:0;font-weight:400"><span lang="en">Audit single-use plastics in the routine surgery set-up and replace what you can.</span><span lang="ar">مراجعة البلاستيك أحادي الاستخدام في التجهيز الروتيني للعيادة واستبدال ما يمكن استبداله.</span> <span class="src">Martin et al. (2022)</span></label></li>
-      <li><input type="checkbox" id="c6"><label for="c6" style="margin:0;font-weight:400"><span lang="en">Separate clinical from non-clinical waste and recycle the non-clinical part.</span><span lang="ar">فصل المخلفات الطبية عن غير الطبية وإعادة تدوير الجزء غير الطبي.</span> <span class="src">Martin et al. (2021b)</span></label></li>
-      <li><input type="checkbox" id="c7"><label for="c7" style="margin:0;font-weight:400"><span lang="en">Review cleaning, disinfection, bibs and water use — the biggest hotspots of a check-up.</span><span lang="ar">مراجعة التنظيف والتطهير والمرايل واستهلاك المياه — أكبر مصادر الأثر البيئي في الفحص.</span> <span class="src">Borglin et al. (2021)</span></label></li>
-      <li><input type="checkbox" id="c8"><label for="c8" style="margin:0;font-weight:400"><span lang="en">Switch off equipment, lights and AC when not in use.</span><span lang="ar">إطفاء الأجهزة والإضاءة والتكييف عند عدم الاستخدام.</span> <span class="src">Duane et al. (2017)</span></label></li>
-      <li><input type="checkbox" id="c9"><label for="c9" style="margin:0;font-weight:400"><span lang="en">Recommend manual toothbrushes with replaceable heads over electric ones for most patients.</span><span lang="ar">التوصية بفرشاة يدوية برأس قابل للتغيير بدلًا من الكهربائية لمعظم المرضى.</span> <span class="src">Lyne et al. (2020)</span></label></li>
-      <li><input type="checkbox" id="c10"><label for="c10" style="margin:0;font-weight:400"><span lang="en">Train the whole team and talk to patients about green dentistry.</span><span lang="ar">تدريب فريق العيادة بالكامل والتحدث مع المرضى عن طب الأسنان الأخضر.</span> <span class="src">Bishr et al. (2026); Martin et al. (2021a)</span></label></li>
-    </ul>
-    <div class="card">
-      <h3><span lang="en">Your green score</span><span lang="ar">درجتك الخضراء</span></h3>
-      <div class="score"><span id="score">0</span>/10</div>
-      <div class="meter"><div id="meter"></div></div>
-      <p id="verdict"></p>
-      <p class="src"><span lang="en">Your ticks are saved only on this device.</span><span lang="ar">تُحفظ اختياراتك على هذا الجهاز فقط.</span></p>
-    </div>
+<section id="research" class="field" aria-labelledby="h-ref" style="padding-top:0">
+  <div class="refs-head">
+    <h2 id="h-ref" data-rise><span lang="en">The research</span><span lang="ar">المراجع</span></h2>
+    <p class="soft" data-rise style="--d:80ms"><span lang="en">Every number on this page comes from these peer-reviewed studies (APA 7).</span><span lang="ar">كل رقم في هذه الصفحة مأخوذ من هذه الدراسات المحكّمة (APA 7).</span></p>
   </div>
-</div></section>
-
-<section id="patients"><div class="wrap">
-  <h2><span lang="en">For patients: a healthy smile that's kind to the planet</span><span lang="ar">للمرضى: ابتسامة صحية ورفيقة بالكوكب</span></h2>
-  <div class="grid" style="margin-top:16px">
-    <div class="card"><h3>🪥 <span lang="en">Prevent first</span><span lang="ar">الوقاية أولًا</span></h3><p><span lang="en">Brush twice a day with fluoride toothpaste and cut sugary snacks. Every treatment you avoid saves trips, materials and money.</span><span lang="ar">نظّف أسنانك مرتين يوميًا بمعجون يحتوي على الفلورايد وقلّل السكريات. كل علاج تتجنّبه يوفّر رحلات ومواد ومالًا.</span></p></div>
-    <div class="card"><h3>🔁 <span lang="en">Smarter toothbrush</span><span lang="ar">فرشاة أذكى</span></h3><p><span lang="en">A manual brush with a replaceable head has one of the lowest footprints; electric brushes had the highest in a life-cycle study.</span><span lang="ar">الفرشاة اليدوية ذات الرأس القابل للتغيير من أقل الخيارات أثرًا، بينما كانت الكهربائية الأعلى أثرًا في دراسة دورة الحياة.</span></p></div>
-    <div class="card"><h3>📅 <span lang="en">Fewer, combined visits</span><span lang="ar">زيارات أقل ومجمّعة</span></h3><p><span lang="en">Ask your dentist to combine treatments in one appointment, and use online follow-ups when possible.</span><span lang="ar">اطلب من طبيبك دمج العلاجات في موعد واحد، واستخدم المتابعة عبر الإنترنت متى أمكن.</span></p></div>
-    <div class="card"><h3>🚶 <span lang="en">Greener trip</span><span lang="ar">رحلة أنظف</span></h3><p><span lang="en">Travel is ~65% of dentistry's carbon. Walk, share a ride or take public transport to your clinic.</span><span lang="ar">التنقّل يمثّل نحو ٦٥٪ من انبعاثات طب الأسنان. امشِ أو شارك الرحلة أو استخدم المواصلات العامة.</span></p></div>
-    <div class="card"><h3>♻️ <span lang="en">Ask your clinic</span><span lang="ar">اسأل عيادتك</span></h3><p><span lang="en">Ask whether they use reusable instruments and recycle. Patient demand drives change.</span><span lang="ar">اسأل إن كانت تستخدم أدوات قابلة لإعادة الاستخدام وتعيد التدوير. طلب المرضى يصنع التغيير.</span></p></div>
-  </div>
-</div></section>
-
-<section id="refs"><div class="wrap">
-  <h2><span lang="en">References (APA 7)</span><span lang="ar">المراجع (APA 7)</span></h2>
-  <ol class="refs">
+  <ol class="refs" data-rise style="--d:140ms">
     <li>Abdelgawad, F., Mosallam, O., &amp; Wassef, N. (2025). Assessment of knowledge, attitude and practices regarding green eco-friendly dentistry among dentists: A cross-sectional study. <i>Egyptian Dental Journal, 71</i>(1), 109–120. <a href="https://doi.org/10.21608/edj.2024.339201.3274">https://doi.org/10.21608/edj.2024.339201.3274</a></li>
     <li>Bishr, E. M., Hussein, M. F., Ismail, G. A., Fetohy, E. M., &amp; El-Zoka, A. H. (2026). Effectiveness of an educational program on improving the knowledge and practice of environmental sustainability in dentistry among undergraduate students at Faculty of Dentistry in Egypt: An interventional study. <i>BMC Medical Education, 26</i>, Article 143. <a href="https://doi.org/10.1186/s12909-025-08137-z">https://doi.org/10.1186/s12909-025-08137-z</a></li>
     <li>Borglin, L., Pekarski, S., Saget, S., &amp; Duane, B. (2021). The life cycle analysis of a dental examination: Quantifying the environmental burden of an examination in a hypothetical dental practice. <i>Community Dentistry and Oral Epidemiology, 49</i>(6), 581–593. <a href="https://doi.org/10.1111/cdoe.12630">https://doi.org/10.1111/cdoe.12630</a></li>
@@ -200,18 +411,19 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
     <li>Martin, N., Sheppard, M., Gorasia, G., Arora, P., Cooper, M., &amp; Mulligan, S. (2021a). Awareness and barriers to sustainability in dentistry: A scoping review. <i>Journal of Dentistry, 112</i>, Article 103735. <a href="https://doi.org/10.1016/j.jdent.2021.103735">https://doi.org/10.1016/j.jdent.2021.103735</a></li>
     <li>Martin, N., Sheppard, M., Gorasia, G., Arora, P., Cooper, M., &amp; Mulligan, S. (2021b). Drivers, opportunities and best practice for sustainability in dentistry: A scoping review. <i>Journal of Dentistry, 112</i>, Article 103737. <a href="https://doi.org/10.1016/j.jdent.2021.103737">https://doi.org/10.1016/j.jdent.2021.103737</a></li>
   </ol>
-</div></section>
+</section>
 </main>
 
-<footer><div class="wrap">
-  <p><b>GEO217 · Climate Change and Sustainability · Group 165 · Alamein International University</b></p>
-  <div class="team">
-    <span>Youssef Islam Elsayeh Abdelsadek Ahmed — <span lang="en">Computer Science</span><span lang="ar">علوم الحاسب</span></span>
-    <span>Youssef Ahmed Hassan Aly Abdo — <span lang="en">Computer Engineering</span><span lang="ar">هندسة الحاسبات</span></span>
-    <span>Adham Mohamed Abdelfatah Elsherif — <span lang="en">Dentistry</span><span lang="ar">طب الأسنان</span></span>
+<footer>
+  <p class="word" aria-hidden="true"><span lang="en">GreenSmile</span><span lang="ar">ابتسامة خضراء</span></p>
+  <div class="fcols">
+    <div><p><b>GEO217 · Group 165</b></p><p><span lang="en">Climate Change and Sustainability, Alamein International University</span><span lang="ar">تغيّر المناخ والاستدامة، جامعة العلمين الدولية</span></p></div>
+    <div><p>Youssef Islam Elsayeh Abdelsadek Ahmed · <span lang="en">Computer Science</span><span lang="ar">علوم الحاسب</span></p><p>Youssef Ahmed Hassan Aly Abdo · <span lang="en">Computer Engineering</span><span lang="ar">هندسة الحاسبات</span></p><p>Adham Mohamed Abdelfatah Elsherif · <span lang="en">Dentistry</span><span lang="ar">طب الأسنان</span></p></div>
+    <div><p>#AIU #SDGs #Climate_change_Sustainability #GEO217 #Alamein_International_University</p></div>
+    <p class="credits">Pictures: <a href="https://commons.wikimedia.org/w/index.php?curid=190774257">“Dentist Examining Patient’s Teeth with Dental Mirror”</a> by Jameswasswa, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons; <a href="https://commons.wikimedia.org/w/index.php?curid=53516646">“Dental mirror”</a> by Rachmaninoff, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons; <a href="https://commons.wikimedia.org/wiki/File:Disposable_gloves_06.JPG">“Disposable gloves 06”</a> by Werneuchen, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>, via Wikimedia Commons; <a href="https://commons.wikimedia.org/wiki/File:Dental_instruments,_from_%27Chirurgia%27_Wellcome_L0016868.jpg">“Dental instruments, from 'Chirurgia'”</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, via Wikimedia Commons; <a href="https://commons.wikimedia.org/wiki/File:Cairo_traffic_near_Muhammad_Ali_mosque_in_Cairo_Egypt.jpg">“Cairo traffic near Muhammad Ali mosque in Cairo Egypt”</a> by Tim Adams, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, via Wikimedia Commons; <a href="https://commons.wikimedia.org/wiki/File:Toothbrush,_Toothpaste,_Dental_Care_(571741).jpg">“Toothbrush, Toothpaste, Dental Care (571741)”</a> by Steve Buissinne, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, via Wikimedia Commons.</p>
+    <div class="end"><span class="small">© 2026 Group 165</span><a class="btn" href="#top"><span lang="en">Back to top</span><span lang="ar">إلى الأعلى</span></a></div>
   </div>
-  <p>#AIU #SDGs #Climate_change_Sustainability #GEO217 #Alamein_International_University</p>
-</div></footer>
+</footer>
 
 <script>
 // Constants come from the cited papers; see the "Method" note under the calculator.
@@ -227,53 +439,105 @@ console.assert(Math.abs(footprint(100, 20, 50).travel - 219.2) < 0.5, 'footprint
 
 const $ = id => document.getElementById(id);
 const num = id => Math.max(0, Number($(id).value) || 0);
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let lang = 'en';
 try { if (localStorage.getItem('gs-lang') === 'ar') lang = 'ar'; } catch (e) {}
-const fmt = (n, unit) => {
-  const big = n >= 1000 && unit === 'kg';
-  const v = big ? n / 1000 : n;
-  const s = v.toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US', { maximumFractionDigits: big ? 2 : 0 });
-  const u = { kg: big ? (lang === 'ar' ? 'طن' : 't') : (lang === 'ar' ? 'كجم' : 'kg'), items: '' }[unit];
-  return (s + ' ' + u).trim();
-};
 
-function update() {
-  const f = footprint(num('visits'), num('km'), num('car'));
-  const avoid = num('avoid'), plastic = num('plastic');
-  for (const [a, b] of [['car', 'carOut'], ['car', 'carOutAr'], ['avoid', 'avoidOut'], ['avoid', 'avoidOutAr'], ['plastic', 'plasticOut'], ['plastic', 'plasticOutAr']]) $(b).textContent = $(a).value;
-  $('rTravel').textContent = fmt(f.travel, 'kg') + ' CO₂';
-  $('rTotal').textContent = '≈ ' + fmt(f.total, 'kg') + ' CO₂e';
-  $('rPlastic').textContent = fmt(f.plastic, 'kg');
-  $('rItems').textContent = fmt(f.items, 'items');
-  $('sCo2').textContent = fmt(f.travel * 12 * avoid / 100, 'kg') + ' CO₂';
-  $('sPlastic').textContent = fmt(f.plastic * 12 * plastic / 100, 'kg');
+const loc = () => (lang === 'ar' ? 'ar-EG' : 'en-US');
+function fmtKg(n) {
+  const big = n >= 1000, v = big ? n / 1000 : n;
+  const s = v.toLocaleString(loc(), { maximumFractionDigits: big ? 2 : 0 });
+  return s + ' ' + (big ? (lang === 'ar' ? 'طن' : 't') : (lang === 'ar' ? 'كجم' : 'kg'));
+}
+const fmtInt = n => Math.round(n).toLocaleString(loc());
+
+// Smoothly counts an element from its last value to the new one.
+function tween(el, to, fmt, ms = 450) {
+  const from = el._v ?? to;
+  el._v = to;
+  if (still || from === to) { el.textContent = fmt(to); return; }
+  const t0 = performance.now();
+  cancelAnimationFrame(el._raf);
+  const step = now => {
+    const k = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = fmt(from + (to - from) * e);
+    if (k < 1) el._raf = requestAnimationFrame(step);
+  };
+  el._raf = requestAnimationFrame(step);
 }
 
+function update(animate = true) {
+  const f = footprint(num('visits'), num('km'), num('car'));
+  const avoid = num('avoid'), plastic = num('plastic');
+  for (const [a, b] of [['car', 'carOut'], ['car', 'carOutAr'], ['avoid', 'avoidOut'], ['avoid', 'avoidOutAr'], ['plastic', 'plasticOut'], ['plastic', 'plasticOutAr']])
+    $(b).textContent = Number($(a).value).toLocaleString(loc());
+  const big = f.travel >= 1000;
+  const ms = animate ? 450 : 0;
+  tween($('rTravel'), big ? f.travel / 1000 : f.travel, v => v.toLocaleString(loc(), { maximumFractionDigits: big ? 2 : 0 }), ms);
+  $('rTravelU').textContent = big ? (lang === 'ar' ? 'طن ثاني أكسيد الكربون' : 't CO₂') : (lang === 'ar' ? 'كجم ثاني أكسيد الكربون' : 'kg CO₂');
+  tween($('rTotal'), f.total, v => '≈ ' + fmtKg(v) + ' CO₂e', ms);
+  tween($('rPlastic'), f.plastic, fmtKg, ms);
+  tween($('rItems'), f.items, fmtInt, ms);
+  tween($('sCo2'), f.travel * 12 * avoid / 100, fmtKg, ms);
+  tween($('sPlastic'), f.plastic * 12 * plastic / 100, fmtKg, ms);
+  if (animate && !still) { const g = $('glass'); g.classList.add('pulse'); clearTimeout(g._t); g._t = setTimeout(() => g.classList.remove('pulse'), 180); }
+}
+
+// Checklist
 const boxes = [...document.querySelectorAll('#checks input')];
 function score() {
   const n = boxes.filter(b => b.checked).length;
-  $('score').textContent = n;
-  $('meter').style.width = n * 10 + '%';
-  const v = n >= 8 ? ['A green leader — share your story!', 'عيادة رائدة خضراء — شارك تجربتك!']
-          : n >= 4 ? ['Good start — pick two more steps this month.', 'بداية جيدة — اختر خطوتين إضافيتين هذا الشهر.']
-          : ['Every clinic starts somewhere — try reusable exam kits first.', 'كل عيادة تبدأ من مكان ما — ابدأ بأطقم الفحص القابلة لإعادة الاستخدام.'];
+  tween($('score'), n, v => Math.round(v).toLocaleString(loc()), 300);
+  [...$('dots').children].forEach((d, i) => d.classList.toggle('on', i < n));
+  const v = n >= 8 ? ['A green leader. Share your story.', 'عيادة رائدة خضراء. شارك تجربتك.']
+          : n >= 4 ? ['Good start. Pick two more steps this month.', 'بداية جيدة. اختر خطوتين إضافيتين هذا الشهر.']
+          : ['Every clinic starts somewhere. Try reusable exam kits first.', 'كل عيادة تبدأ من مكان ما. ابدأ بأطقم الفحص القابلة لإعادة الاستخدام.'];
   $('verdict').textContent = v[lang === 'ar' ? 1 : 0];
   try { localStorage.setItem('gs-checks', JSON.stringify(boxes.map(b => b.checked))); } catch (e) {}
 }
 try { JSON.parse(localStorage.getItem('gs-checks') || '[]').forEach((c, i) => { if (boxes[i]) boxes[i].checked = c; }); } catch (e) {}
 
-function setLang(l) {
-  lang = l;
-  document.documentElement.lang = l;
-  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
-  $('langBtn').textContent = l === 'ar' ? 'English' : 'عربي';
-  try { localStorage.setItem('gs-lang', l); } catch (e) {}
-  update(); score();
+// Accordion
+const panels = [...document.querySelectorAll('.panel')];
+panels.forEach(p => p.querySelector('button').addEventListener('click', () => {
+  panels.forEach(q => { q.classList.toggle('open', q === p); q.querySelector('button').setAttribute('aria-expanded', q === p); });
+}));
+
+// Stat figures count up once, when they come into view
+const figs = [...document.querySelectorAll('[data-count]')];
+const showFig = (el, animate) => {
+  const dec = +el.dataset.dec, suf = el.dataset.suffix ? (lang === 'ar' ? '٪' : '%') : '';
+  const fmt = v => v.toLocaleString(loc(), { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf;
+  if (animate) { el._v = 0; tween(el, +el.dataset.count, fmt, 1200); } else { el._v = +el.dataset.count; el.textContent = fmt(el._v); }
+};
+
+// Entrances: each part rises once as its section enters
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('[data-count]').forEach(f => showFig(f, true));
+  io.unobserve(e.target);
+}), { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }) : null;
+document.querySelectorAll('[data-rise]').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+
+function setLang(l, fade) {
+  const apply = () => {
+    lang = l;
+    document.documentElement.lang = l;
+    document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    $('langBtn').textContent = l === 'ar' ? 'English' : 'عربي';
+    try { localStorage.setItem('gs-lang', l); } catch (e) {}
+    update(false); score(); figs.forEach(f => showFig(f, false));
+  };
+  if (!fade || still) return apply();
+  const m = document.querySelector('main');
+  m.classList.add('swap');
+  setTimeout(() => { apply(); m.classList.remove('swap'); }, 180);
 }
-$('langBtn').onclick = () => setLang(lang === 'ar' ? 'en' : 'ar');
-document.querySelectorAll('input[type=number],input[type=range]').forEach(i => i.addEventListener('input', update));
+$('langBtn').onclick = () => setLang(lang === 'ar' ? 'en' : 'ar', true);
+document.querySelectorAll('input[type=number],input[type=range]').forEach(i => i.addEventListener('input', () => update(true)));
 boxes.forEach(b => b.addEventListener('change', score));
-setLang(lang);
+setLang(lang, false);
 </script>
 </body>
 </html>
